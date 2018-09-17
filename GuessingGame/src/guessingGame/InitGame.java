@@ -4,16 +4,31 @@ import java.util.Scanner;
 
 public class InitGame
 {	
-	int numberInputted;
-	String numberInputtedStr;
+	Scanner playerInput;	
 	
+	//Asks for the number of players required to play
 	public int numOfPlayers()
 	{		
-		Scanner numOfPlayers = new Scanner(System.in);
+		this.playerInput = new Scanner(System.in);
 		System.out.println("Please specify the number of players");
-		numberInputtedStr = numOfPlayers.next();
-		numberInputted = Integer.parseInt(numberInputtedStr);
-		//numOfPlayers.close();
-		return numberInputted;
+		while(true)
+		{
+			//This try-catch makes sure the user is returning a valid number.
+			try
+			{
+				return Integer.parseInt(playerInput.next());				
+			}
+			catch(NumberFormatException e)
+			{
+				System.out.println("This is not a valid number. \nPlease try again");				
+			}
+		}
+		//return Integer.parseInt(playerInput.next());
+	}
+	
+	//Closes the input scanner to solve a leak
+	public void closeScanner()
+	{
+		this.playerInput.close();
 	}
 }

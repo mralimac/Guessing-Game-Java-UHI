@@ -1,43 +1,60 @@
 package guessingGame;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Player
 {	
-	int number;
-	String playerInput;
-	boolean playerWin;
+	int number;	
 	int playerGuess;
-	Player[] players = new Player[100];
+	Scanner playersInput;
+	List<Player> players = new ArrayList<Player>();
 	int playersCreated;	
 	
-	public void guess()
+	//This is the method that runs to make players take a guess
+	public int guess(int playerNum)
 	{
-		Scanner playerGuess = new Scanner(System.in);
-		playerInput = playerGuess.next();
-		number = Integer.parseInt(playerInput);
-		this.playerGuess = number;
-		System.out.println("I'm guessing " + number);
+		this.playersInput = new Scanner(System.in);
+		while(true)
+		{	
+			try
+			{
+				number = Integer.parseInt(playersInput.next());
+				this.playerGuess = number;
+				System.out.println("Player " + playerNum + ": I'm guessing " + number);
+				return number;
+			}
+			catch(NumberFormatException e)
+			{
+				System.out.println("Player " + playerNum + ". This is an incorrect format.\nPlease try again");
+			}
+		}
 	}
 	
+	//This method creates and adds a player to the list of players
 	public void createPlayer()
 	{
-		players[playersCreated++] = new Player();
+		playersCreated++;
+		players.add(new Player());
 	}
 	
-	
-	public void win(boolean win)
-	{		
-		this.playerWin = win;		
-	}
-	
-	public boolean didPlayerWin()
+	//Checks if the players guess matches the randomly generated number
+	public boolean didPlayerWin(int numberToGuess)
 	{
-		return this.playerWin;
+		if(this.playerGuess == numberToGuess)
+		{
+			return true;
+		}
+			else
+		{
+			return false;
+		}
 	}
 	
-	public int playersGuess()
+	//Closes the scanner to prevent a leak
+	public void closeScanner()
 	{
-		return this.playerGuess;
+		this.playersInput.close();
 	}
 }
