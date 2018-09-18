@@ -16,6 +16,7 @@ public class Player
 	public int guess(int playerNum)
 	{
 		this.playersInput = new Scanner(System.in);
+		System.out.println("Player " + playerNum + " - What number do you guess?");
 		while(true)
 		{	
 			try
