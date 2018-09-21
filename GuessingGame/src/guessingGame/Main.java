@@ -4,12 +4,12 @@ public class Main {
 	
 
 	public static void main(String[] args) {
-		GUI initGUI = new GUI();
-		initGUI.initGUI();
+		//GUI initGUI = new GUI();
+		//initGUI.initGUI();
 		
 		//Sets up the games parameters. Namely, the amount of players that are playing
 		InitGame initGame = new InitGame();
-		initGame.init(initGUI);
+		//initGame.init();
 		
 		
 		//initGUI.initGUI();		
@@ -18,7 +18,7 @@ public class Main {
 		GuessGame game = new GuessGame();
 		
 		//Starts that new game
-		game.startGame(initGUI, initGame.numOfPlayers(), initGame.difficulty());
+		game.startGame(initGame.numOfPlayers(), initGame.difficulty());
 	}
 
 }
