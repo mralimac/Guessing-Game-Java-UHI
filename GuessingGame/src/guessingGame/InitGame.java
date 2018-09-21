@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class InitGame
 {	
-	Scanner playerInput = new Scanner(System.in);;
+	Scanner playerInput = new Scanner(System.in);
 	GUI initGUI;
 	//Asks for the number of players required to play
 	public void init(GUI GUI) {
