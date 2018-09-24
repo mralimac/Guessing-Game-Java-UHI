@@ -1,7 +1,6 @@
 package guessingGame;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class Player
@@ -9,16 +8,22 @@ public class Player
 	int number;	
 	int playerGuess;
 	Scanner playersInput;
-	List<Player> players = new ArrayList<Player>();
+	ArrayList<Player> players = new ArrayList<Player>();
 	int playersCreated;	
 	
-	//This is the method that runs to make players take a guess
+	//This method is called when the "GuessGame" class needs the player to input a guess 
 	public int guess(int playerNum)
 	{
+		//A guess is created and stored by a Scanner which reads the player's input into console
+		//and stores it in the int variable "playersGuess"
 		this.playersInput = new Scanner(System.in);
 		System.out.println("Player " + playerNum + " - What number do you guess?");
 		while(true)
-		{	
+		{
+			//This try-catch loop inside this while loop is for error checking
+			//If the player attempts to enter a non-int like "h" then the program will catch
+			//that and ask the player to guess again. It will refuse to contiune until a valid
+			//answer is created
 			try
 			{
 				number = Integer.parseInt(playersInput.next());
@@ -33,7 +38,9 @@ public class Player
 		}
 	}
 	
-	//This method creates and adds a player to the list of players
+	//This method is used to create players
+	//It does this by adding 1 to the total player count "playersCreated"
+	//And then it adds the players to the ArrayList
 	public void createPlayer()
 	{
 		playersCreated++;
